@@ -1,5 +1,6 @@
-public class ContactManager  {
+public class Contact {
     public static void main(String[] args) {
         new OptionsClass();
     }
+
 }
