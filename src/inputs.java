@@ -72,6 +72,24 @@ public class inputs {
             return getDouble(min, max);
         }
     }
+
+    public long getlong(){
+        try {
+            return Long.parseLong(this.getString());
+        } catch (NumberFormatException e) {
+            System.out.println("You must enter a number.");
+            return this.getlong();
+        }
+    }
+    public long getLong(long min, long max) {
+        long userlong = this.getlong();
+        if (userlong >= min && userlong <= max) {
+            return userlong;
+        } else {
+            System.out.println("must be between " + min + " and " + max + ".");
+            return getLong(min, max);
+        }
+    }
 //    public double getBinary(){
 //        double userDouble = this.getDouble();
 //
