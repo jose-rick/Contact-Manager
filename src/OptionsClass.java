@@ -37,7 +37,7 @@ public class OptionsClass {
             System.out.println(findContact.readAndPrintContacts(userinput));
         } while (sc.yesNo("Continue searching? [Y/N]"));
     }
-    public static void deleteingContact(){
+    public static void deletingContact(){
         do {
             String userinput = sc.getString("Enter the name of a contact to delete");
             PathingToContacts deleteContact = new PathingToContacts();
@@ -63,7 +63,7 @@ public class OptionsClass {
                     searchName();
                 }
                 case 4 -> {
-                    deleteingContact();
+                    deletingContact();
                     displayall();
                 }
                 case 5 -> {

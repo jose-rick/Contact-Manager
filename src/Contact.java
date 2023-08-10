@@ -11,10 +11,7 @@ public class Contact {
         this.contactName = contactName;
         this.contactNum = contactNum;
     }
-    public Contact(String contactName) {
-        this.contactName = contactName;
-        this.contactNum;
-    }
+
 
     //othermethods
     public String toString(){
