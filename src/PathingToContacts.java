@@ -30,7 +30,6 @@ public class PathingToContacts {
     }
 
     public void addToContacts(String userinput, long usernum) {
-        Path contactsPath = Paths.get("/Users/josedelaluz/ideaprojects/Jose-Rick-Contact-Manager/src/contacts.txt");
         Contact contact = new Contact(userinput, usernum);
         contacts.add(contact.toString());
         try {
@@ -46,13 +45,41 @@ public class PathingToContacts {
         }
     }
 
-    public void readAndPrintContacts(String userinput) {
-        Path contactsPath = Paths.get("/Users/josedelaluz/ideaprojects/Jose-Rick-Contact-Manager/src/contacts.txt");
+    public String readAndPrintContacts(String userinput) {
+        String personfound = "Not found";
+        boolean found = false;
         try {
-           contacts = Files.readAllLines(contactsPath);
-
+            List<String> contacts = Files.readAllLines(contactsPath);
+            for (String person : contacts) {
+                if (person.contains(userinput)) {
+                    personfound = person;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                personfound = "Not found";
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return personfound;
     }
+
+    public void deleteContact(String userinput){
+        Contact contact = new Contact(userinput);
+        contacts.add(contact.toString());
+        try {
+            Set<String> exisitingNames = new HashSet<>(Files.readAllLines(contactsPath));
+            for (String name : contacts) {
+                if (!exisitingNames.contains(name)) {
+                    Files.write(contactsPath, Collections.singletonList(name), StandardOpenOption.APPEND);
+                    exisitingNames.add(name);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -1,2 +1,2 @@
-name: joe   |    number: 1234567890 ~
-name: a   |    number: 1234567890 ~
+joe 1234567890
+rick 1234567890

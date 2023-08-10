@@ -32,11 +32,17 @@ public class OptionsClass {
     }
     public static void searchName(){
         do {
-            String userinput = sc.getString("Enter the name of a contact");
+            String userinput = sc.getString("Enter the name of a contact to search");
             PathingToContacts findContact = new PathingToContacts();
-            findContact.readAndPrintContacts(userinput);
-
+            System.out.println(findContact.readAndPrintContacts(userinput));
         } while (sc.yesNo("Continue searching? [Y/N]"));
+    }
+    public static void deleteingContact(){
+        do {
+            String userinput = sc.getString("Enter the name of a contact to delete");
+            PathingToContacts deleteContact = new PathingToContacts();
+
+        }while (sc.yesNo("Continue Deleting? [Y/N]"));
     }
 
     public OptionsClass() {
@@ -57,14 +63,15 @@ public class OptionsClass {
                     searchName();
                 }
                 case 4 -> {
-
+                    deleteingContact();
+                    displayall();
                 }
                 case 5 -> {
 
                 }
             }
 
-        } while (sc.yesNo("Try again? [y/n]"));
+        } while (sc.yesNo("Continue? [y/n]"));
 
 
     }
