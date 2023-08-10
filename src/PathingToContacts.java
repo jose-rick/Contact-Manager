@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -26,8 +29,7 @@ public class PathingToContacts {
         }
     }
 
-    public void addToContacts(String userinput, long usernum)
-    {
+    public void addToContacts(String userinput, long usernum) {
         Path contactsPath = Paths.get("/Users/josedelaluz/ideaprojects/Jose-Rick-Contact-Manager/src/contacts.txt");
         Contact contact = new Contact(userinput, usernum);
         contacts.add(contact.toString());
@@ -44,5 +46,13 @@ public class PathingToContacts {
         }
     }
 
-}
+    public void readAndPrintContacts(String userinput) {
+        Path contactsPath = Paths.get("/Users/josedelaluz/ideaprojects/Jose-Rick-Contact-Manager/src/contacts.txt");
+        try {
+           contacts = Files.readAllLines(contactsPath);
 
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

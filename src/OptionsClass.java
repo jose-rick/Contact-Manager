@@ -25,7 +25,7 @@ public class OptionsClass {
         String username = sc.getString();
         long usernum = 0;
         do {
-            System.out.println("Enter there number make sure its 7 digits long");
+            System.out.println("Enter there number make sure its 10 digits long");
             usernum = sc.getlong();
         } while (Long.toString(usernum).length() != 10);
         addname.addToContacts(username, usernum);
@@ -33,10 +33,10 @@ public class OptionsClass {
     public static void searchName(){
         do {
             String userinput = sc.getString("Enter the name of a contact");
-            Contact hashingnames = new Contact();
-            hashingnames.toHashMap();
+            PathingToContacts findContact = new PathingToContacts();
+            findContact.readAndPrintContacts(userinput);
 
-        } while (true);
+        } while (sc.yesNo("Continue searching? [Y/N]"));
     }
 
     public OptionsClass() {

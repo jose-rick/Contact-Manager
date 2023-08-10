@@ -16,11 +16,6 @@ public class Contact {
     public String toString(){
         return "name: " + contactName + "   |   " + " number: " + contactNum + " ~";
     }
-    public Map toHashMap(){
-        HashMap<String, Long> ppl = new HashMap<>();
-        ppl.put(contactName, contactNum);
-        return ppl;
-    }
 
 
     //getters and setters
