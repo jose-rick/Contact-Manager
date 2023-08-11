@@ -52,7 +52,7 @@ public class PathingToContacts {
         try {
             List<String> contacts = Files.readAllLines(contactsPath);
             for (String person : contacts) {
-                if (person.contains(userinput)) {
+                if (person.toLowerCase().contains(userinput.toLowerCase())) {
                     personfound = person;
                     found = true;
                     break;
@@ -71,7 +71,7 @@ public class PathingToContacts {
         try {
             List<String> contacts = Files.readAllLines(contactsPath);
             List<String> updatedContacts = contacts.stream()
-                    .filter(person -> !person.contains(userinput))
+                    .filter(person -> !person.toLowerCase().contains(userinput.toLowerCase()))
                     .collect(Collectors.toList());
 
             Files.write(contactsPath, updatedContacts);
