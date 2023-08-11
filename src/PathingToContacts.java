@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PathingToContacts {
     //path to contact.txt
@@ -66,20 +67,32 @@ public class PathingToContacts {
         return personfound;
     }
 
-    public void deleteContact(String userinput){
-        Contact contact = new Contact(userinput);
-        contacts.add(contact.toString());
+    public void deleteContactByName(String userinput){
+//        Contact contact = new Contact(userinput);
+//        contacts.add(contact.toString());
+//        try {
+//            Set<String> exisitingNames = new HashSet<>(Files.readAllLines(contactsPath));
+//            for (String name : contacts) {
+//                if (!exisitingNames.contains(name)) {
+//                    Files.write(contactsPath, Collections.singletonList(name), StandardOpenOption.APPEND);
+//                    exisitingNames.add(name);
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         try {
-            Set<String> exisitingNames = new HashSet<>(Files.readAllLines(contactsPath));
-            for (String name : contacts) {
-                if (!exisitingNames.contains(name)) {
-                    Files.write(contactsPath, Collections.singletonList(name), StandardOpenOption.APPEND);
-                    exisitingNames.add(name);
-                }
-            }
+            List<String> contacts = Files.readAllLines(contactsPath);
+            List<String> updatedContacts = contacts.stream()
+                    .filter(person -> !person.contains(userinput))
+                    .collect(Collectors.toList());
+
+            Files.write(contactsPath, updatedContacts);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
 }

@@ -41,6 +41,7 @@ public class OptionsClass {
         do {
             String userinput = sc.getString("Enter the name of a contact to delete");
             PathingToContacts deleteContact = new PathingToContacts();
+            deleteContact.deleteContactByName(userinput);
 
         }while (sc.yesNo("Continue Deleting? [Y/N]"));
     }
@@ -67,7 +68,8 @@ public class OptionsClass {
                     displayall();
                 }
                 case 5 -> {
-
+                    System.out.println("Goodbye");
+                    System.exit(0);
                 }
             }
 

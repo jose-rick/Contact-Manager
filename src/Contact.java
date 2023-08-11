@@ -15,7 +15,7 @@ public class Contact {
 
     //othermethods
     public String toString(){
-        return  contactName +" " +contactNum ;
+        return  contactName + " " +contactNum ;
     }
 
 
@@ -32,7 +32,7 @@ public class Contact {
         return contactNum;
     }
 
-    public void setContactNum(int contactNum) {
+    public void setContactNum(long contactNum) {
         this.contactNum = contactNum;
     }
 }
