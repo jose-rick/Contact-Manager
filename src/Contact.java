@@ -2,8 +2,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Contact {
+    //Fields and properties
     private String contactName;
     private long contactNum;
+
+    public Colors color = new Colors();
 
 
     //constructor
@@ -14,10 +17,11 @@ public class Contact {
 
 
     //othermethods
+    //making a string out of our contact name and long contactnum
     public String toString() {
-        return contactName + " | " + contactNumToString();
+        return  contactName + " | "  + contactNumToString();
     }
-
+    //adding hyphens to the long checking wether to add one or two hyphens
     public String contactNumToString() {
         String number = Long.toString(contactNum);
         String num = "";

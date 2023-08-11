@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class inputs {
     //properties and fields
     private Scanner sc;
-
+    public Colors color = new Colors();
     //constructors
 
 
@@ -38,7 +38,7 @@ public class inputs {
         try {
             return Integer.parseInt(this.getString());
         } catch (NumberFormatException e) {
-            System.out.println("You must enter a whole number.");
+            System.out.println(color.RED +"You must enter a whole number." + color.RESET);
             return this.getInt();
         }
     }
@@ -48,7 +48,7 @@ public class inputs {
         if (userint >= min && userint <= max) {
             return userint;
         } else {
-            System.out.println("must be between " + min + " and " + max + ".");
+            System.out.println(color.RED +"must be between " + min + " and " + max + "." + color.RESET);
             return getInt(min, max);
         }
     }
@@ -58,7 +58,7 @@ public class inputs {
         try {
             return Double.parseDouble(this.getString());
         } catch (NumberFormatException e) {
-            System.out.println("You must enter a number.");
+            System.out.println(color.RED +"You must enter a number." + color.RESET);
             return this.getDouble();
         }
     }
@@ -68,7 +68,7 @@ public class inputs {
         if (userDouble >= min && userDouble <= max) {
             return userDouble;
         } else {
-            System.out.println("must be between " + min + " and " + max + ".");
+            System.out.println(color.RED +"must be between " + min + " and " + max + "." + color.RESET);
             return getDouble(min, max);
         }
     }
@@ -77,7 +77,7 @@ public class inputs {
         try {
             return Long.parseLong(this.getString());
         } catch (NumberFormatException e) {
-            System.out.println("You must enter a number.");
+            System.out.println(color.RED +"You must enter a number." + color.RESET);
             return this.getlong();
         }
     }
@@ -86,7 +86,7 @@ public class inputs {
         if (userlong >= min && userlong <= max) {
             return userlong;
         } else {
-            System.out.println("must be between " + min + " and " + max + ".");
+            System.out.println(color.RED +"must be between " + min + " and " + max + "." + color.RESET);
             return getLong(min, max);
         }
     }
