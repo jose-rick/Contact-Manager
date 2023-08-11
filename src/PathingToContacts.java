@@ -24,20 +24,10 @@ public class PathingToContacts {
 
     //    contactsPath equals to the absoulute path of contacts.txt
     public void displayAllContacts() {
-//        try {
-//            List<String> contacts = Files.readAllLines(contactsPath);
-//            System.out.println("| Name | Phone number |");
-//            System.out.println("----------------------");
-//            for (String contact : contacts) {
-//                System.out.printf("| %-10s |\n",contact);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
         try {
             List<String> contacts = Files.readAllLines(contactsPath);
-            System.out.println("| Name            | Phone number  |");
+            Colors color = new Colors();
+            System.out.println(color.RED + "| Name            | Phone number  |" + color.RESET);
             System.out.println("|-----------------|---------------|");
             for (String contact : contacts) {
                 // Assuming the contact is stored as "Name | PhoneNumber" in the file.
@@ -45,7 +35,7 @@ public class PathingToContacts {
                 if(splitContact.length == 2) {
                     String name = splitContact[0].trim();
                     String phoneNumber = splitContact[1].trim();
-                    System.out.printf("| %-15s | %-13s |\n", name, phoneNumber);
+                    System.out.printf(color.BLUE + "| %-15s | %-13s |\n" +  color.RESET, name, phoneNumber);
                 }
             }
         } catch (IOException e) {
@@ -53,30 +43,6 @@ public class PathingToContacts {
         }
     }
 
-//    public void addToContacts(String userinput, long usernum) {
-//        String truncatedName = userinput.length() > MAX_NAME_LENGTH ? userinput.substring(0, MAX_NAME_LENGTH) : userinput;
-//
-//        // Convert the phone number to String and truncate if it's too long
-//        String phoneStr = String.valueOf(usernum);
-//        String truncatedPhone = phoneStr.length() > MAX_PHONE_LENGTH ? phoneStr.substring(0, MAX_PHONE_LENGTH) : phoneStr;
-//
-//        Contact contact = new Contact(truncatedName, Long.parseLong(truncatedPhone));
-//        contacts.add(contact.toString());
-//
-//        try {
-//            Set<String> exisitingNames = new HashSet<>(Files.readAllLines(contactsPath));
-//            for (String name : contacts) {
-//                if (!exisitingNames.contains(name)) {
-//                    Files.write(contactsPath, Collections.singletonList(name), StandardOpenOption.APPEND);
-//                    exisitingNames.add(name);
-//                } else {
-//                    System.out.println("There is a " + name + " already.");
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 public void addToContacts(String userinput, long usernum) {
     String truncatedName = userinput.length() > MAX_NAME_LENGTH ? userinput.substring(0, MAX_NAME_LENGTH) : userinput;
 
