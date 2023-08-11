@@ -15,7 +15,7 @@ public class Contact {
 
     //othermethods
     public String toString(){
-        return  contactName + " " +contactNum ;
+        return contactName + " | " +contactNum;
     }
 
 

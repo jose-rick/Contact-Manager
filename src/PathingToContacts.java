@@ -23,22 +23,15 @@ public class PathingToContacts {
     //    contactsPath equals to the absoulute path of contacts.txt
     public void displayAllContacts() {
         try {
-            contacts = Files.readAllLines(contactsPath);
-            System.out.println(contacts);
+            List<String> contacts = Files.readAllLines(contactsPath);
+            System.out.println("| Name | Phone number |");
+            System.out.println("----------------------");
+            for (String contact : contacts) {
+                System.out.printf("| %-10s |\n",contact);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//        try {
-//            List<String> contacts = Files.readAllLines(contactsPath);
-//            System.out.println("Name | Phone number");
-//            System.out.println("---------------");
-//            for (String contact : contacts) {
-//                System.out.println(contact);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
     public void addToContacts(String userinput, long usernum) {
@@ -50,6 +43,9 @@ public class PathingToContacts {
                 if (!exisitingNames.contains(name)) {
                     Files.write(contactsPath, Collections.singletonList(name), StandardOpenOption.APPEND);
                     exisitingNames.add(name);
+                } else {
+                    System.out.println("there is a " + name + " already\n");
+//                    System.out.println("somethings here" + exisitingNames);
                 }
             }
         } catch (IOException e) {
