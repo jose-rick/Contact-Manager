@@ -14,8 +14,19 @@ public class Contact {
 
 
     //othermethods
-    public String toString(){
-        return contactName + " | " +contactNum;
+    public String toString() {
+        return contactName + " | " + contactNumToString();
+    }
+
+    public String contactNumToString() {
+        String number = Long.toString(contactNum);
+        String num = "";
+        if (number.length() == 10) {
+            num = number.substring(0, 3) + "-" + number.substring(3, 6) + "-" + number.substring(6, number.length());
+        } else {
+            num = number.substring(0, 3) + "-" + number.substring(3, number.length());
+        }
+        return num;
     }
 
 

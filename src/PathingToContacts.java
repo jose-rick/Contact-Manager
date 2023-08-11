@@ -53,9 +53,16 @@ public class PathingToContacts {
         }
     }
 
-    public void addToContacts(String userinput, long usernum) {
-//        Contact contact = new Contact(userinput, usernum);
+//    public void addToContacts(String userinput, long usernum) {
+//        String truncatedName = userinput.length() > MAX_NAME_LENGTH ? userinput.substring(0, MAX_NAME_LENGTH) : userinput;
+//
+//        // Convert the phone number to String and truncate if it's too long
+//        String phoneStr = String.valueOf(usernum);
+//        String truncatedPhone = phoneStr.length() > MAX_PHONE_LENGTH ? phoneStr.substring(0, MAX_PHONE_LENGTH) : phoneStr;
+//
+//        Contact contact = new Contact(truncatedName, Long.parseLong(truncatedPhone));
 //        contacts.add(contact.toString());
+//
 //        try {
 //            Set<String> exisitingNames = new HashSet<>(Files.readAllLines(contactsPath));
 //            for (String name : contacts) {
@@ -63,37 +70,37 @@ public class PathingToContacts {
 //                    Files.write(contactsPath, Collections.singletonList(name), StandardOpenOption.APPEND);
 //                    exisitingNames.add(name);
 //                } else {
-//                    System.out.println("there is a " + name + " already\n");
-////                    System.out.println("somethings here" + exisitingNames);
+//                    System.out.println("There is a " + name + " already.");
 //                }
 //            }
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+//    }
+public void addToContacts(String userinput, long usernum) {
+    String truncatedName = userinput.length() > MAX_NAME_LENGTH ? userinput.substring(0, MAX_NAME_LENGTH) : userinput;
 
-        String truncatedName = userinput.length() > MAX_NAME_LENGTH ? userinput.substring(0, MAX_NAME_LENGTH) : userinput;
+    // Convert the phone number to String and truncate if it's too long
+    String phoneStr = String.valueOf(usernum);
+    String truncatedPhone = phoneStr.length() > MAX_PHONE_LENGTH ? phoneStr.substring(0, MAX_PHONE_LENGTH) : phoneStr;
 
-        // Convert the phone number to String and truncate if it's too long
-        String phoneStr = String.valueOf(usernum);
-        String truncatedPhone = phoneStr.length() > MAX_PHONE_LENGTH ? phoneStr.substring(0, MAX_PHONE_LENGTH) : phoneStr;
+    Contact contact = new Contact(truncatedName, Long.parseLong(truncatedPhone));
+    contacts.add(contact.toString());
 
-        Contact contact = new Contact(truncatedName, Long.parseLong(truncatedPhone));
-        contacts.add(contact.toString());
-
-        try {
-            Set<String> exisitingNames = new HashSet<>(Files.readAllLines(contactsPath));
-            for (String name : contacts) {
-                if (!exisitingNames.contains(name)) {
-                    Files.write(contactsPath, Collections.singletonList(name), StandardOpenOption.APPEND);
-                    exisitingNames.add(name);
-                } else {
-                    System.out.println("There is a " + name + " already.");
-                }
+    try {
+        Set<String> existingNames = new HashSet<>(Files.readAllLines(contactsPath));
+        for (String name : contacts) {
+            if (!existingNames.contains(name.toLowerCase())) {
+                Files.write(contactsPath, Collections.singletonList(name), StandardOpenOption.APPEND);
+                existingNames.add(name.toLowerCase());
+            } else {
+                System.out.println("There is a " + name + " already.");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
 
     public String readAndPrintContacts(String userinput) {
         String personfound = "Not found";

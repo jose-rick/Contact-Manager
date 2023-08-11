@@ -25,9 +25,9 @@ public class OptionsClass {
         String username = sc.getString();
         long usernum = 0;
         do {
-            System.out.println("Enter there number make sure its 10 digits long");
+            System.out.println("Enter there number make sure its 10 digits long or 7 digits long");
             usernum = sc.getlong();
-        } while (Long.toString(usernum).length() != 10);
+        } while (Long.toString(usernum).length() != 10 && Long.toString(usernum).length() != 7 );
         addname.addToContacts(username, usernum);
     }
     public static void searchName(){
