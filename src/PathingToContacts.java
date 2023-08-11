@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class PathingToContacts {
     //path to contact.txt
-    Path contactsPath = Paths.get("/Users/josedelaluz/ideaprojects/Jose-Rick-Contact-Manager/src/contacts.txt");
+    Path contactsPath = Paths.get("src/contacts.txt");
     //contact obj
 
 
@@ -28,6 +28,17 @@ public class PathingToContacts {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+//        try {
+//            List<String> contacts = Files.readAllLines(contactsPath);
+//            System.out.println("Name | Phone number");
+//            System.out.println("---------------");
+//            for (String contact : contacts) {
+//                System.out.println(contact);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void addToContacts(String userinput, long usernum) {
