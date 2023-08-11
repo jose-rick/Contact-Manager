@@ -68,19 +68,6 @@ public class PathingToContacts {
     }
 
     public void deleteContactByName(String userinput){
-//        Contact contact = new Contact(userinput);
-//        contacts.add(contact.toString());
-//        try {
-//            Set<String> exisitingNames = new HashSet<>(Files.readAllLines(contactsPath));
-//            for (String name : contacts) {
-//                if (!exisitingNames.contains(name)) {
-//                    Files.write(contactsPath, Collections.singletonList(name), StandardOpenOption.APPEND);
-//                    exisitingNames.add(name);
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         try {
             List<String> contacts = Files.readAllLines(contactsPath);
             List<String> updatedContacts = contacts.stream()

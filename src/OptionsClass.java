@@ -73,7 +73,7 @@ public class OptionsClass {
                 }
             }
 
-        } while (sc.yesNo("Continue? [y/n]"));
+        } while (sc.yesNo("Back to menu? [y/n]"));
 
 
     }
