@@ -90,18 +90,6 @@ public class inputs {
             return getLong(min, max);
         }
     }
-//    public double getBinary(){
-//        double userDouble = this.getDouble();
-//
-//    }
-//    public double getHex(){
-//
-//    }
-//    public int getBinary(){
-//
-//    }
-//    public int getHex(){
-//
-//    }
+
 
 }
